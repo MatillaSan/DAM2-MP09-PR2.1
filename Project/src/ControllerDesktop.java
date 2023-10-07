@@ -67,39 +67,87 @@ public class ControllerDesktop implements Initializable {
 
     public void showList() throws Exception {
 
-        String opcioSeleccionada = choiceBox.getValue();
+      String opcioSeleccionada = choiceBox.getValue();
 
-        // Obtenir una referència a l'ojecte AppData que gestiona les dades
-        AppData appData = AppData.getInstance();
+      // Obtenir una referència a l'ojecte AppData que gestiona les dades
+      AppData appData = AppData.getInstance();
 
-        // Obtenir les dades de l'opció seleccionada
-        JSONArray dades = appData.getData(opcioSeleccionada);
-        
-        // Funció ‘showList’, modificar com es mostren les dades
+      // Obtenir les dades de l'opció seleccionada
+      JSONArray dades = appData.getData(opcioSeleccionada);
+      
+      // Funció ‘showList’, modificar com es mostren les dades
 
-        // Carregar la plantilla
-        URL resource = this.getClass().getResource("assets/template_list_item.fxml");
+      // Carregar la plantilla
+      URL resource = this.getClass().getResource("assets/template_list_item.fxml");
 
-        // Esborrar la llista actual
-        yPane.getChildren().clear();
+      // Esborrar la llista actual
+      yPane.getChildren().clear();
 
-        // Carregar la llista amb les dades
-        for (int i = 0; i < dades.length(); i++) {
-            JSONObject consoleObject = dades.getJSONObject(i);
+      // Carregar la llista amb les dades
+      for (int i = 0; i < dades.length(); i++) {
+        JSONObject consoleObject = dades.getJSONObject(i);
 
-            if (consoleObject.has("nom")) {
-                String nom = consoleObject.getString("nom");
-                String imatge = "assets/images/" + consoleObject.getString("imatge");
-                FXMLLoader loader = new FXMLLoader(resource);
-                Parent itemTemplate = loader.load();
-                ControllerListItem itemController = loader.getController();
-                itemController.setText(nom);
-                itemController.setImage(imatge);
+        if (consoleObject.has("nom")) {
+          String nom = consoleObject.getString("nom");
+          String imatge = "assets/images/" + consoleObject.getString("imatge");
+          FXMLLoader loader = new FXMLLoader(resource);
+          Parent itemTemplate = loader.load();
+          ControllerListItem itemController = loader.getController();
+          itemController.setText(nom);
+          itemController.setImage(imatge);
 
-                yPane.getChildren().add(itemTemplate);
-            }
+          final String type = opcioSeleccionada;
+          final int index = i;
+          itemTemplate.setOnMouseClicked(event -> {
+            showInfo(type, index);
+          });
+
+          yPane.getChildren().add(itemTemplate);
         }
+      }
     }
+    
+    void showInfo(String type, int index) {
+      // Obtenir una referència a l'ojecte AppData que gestiona les dades
+      AppData appData = AppData.getInstance();
+    
+      // Obtenir les dades de l'opció seleccionada
+      JSONObject dades = appData.getItemData(type, index);
+    
+      // Carregar la plantilla
+      URL resource = this.getClass().getResource("assets/template_info_item.fxml");
+    
+      // Esborrar la informació actual
+      info.getChildren().clear();
+
+      // Carregar la llista amb les dades
+      try {
+        FXMLLoader loader = new FXMLLoader(resource);
+        Parent itemTemplate = loader.load();
+        ControllerInfoItem itemController = loader.getController();
+        itemController.setImage("assets/images/" + dades.getString("imatge"));
+        itemController.setTitle(dades.getString("nom"));
+        switch (type) {
+          case "Consoles": itemController.setText(dades.getString("procesador")); break;
+          case "Jocs": itemController.setText(dades.getString("descripcio")); break;
+          case "Personatges": itemController.setText(dades.getString("nom_del_videojoc")); break;
+        }
+
+        // Afegeix la informació a la vista
+        info.getChildren().add(itemTemplate);
+
+        // Estableix que la mida de itemTemplaate s'ajusti a la mida de info
+        AnchorPane.setTopAnchor(itemTemplate, 0.0);
+        AnchorPane.setRightAnchor(itemTemplate, 0.0);
+        AnchorPane.setBottomAnchor(itemTemplate, 0.0);
+        AnchorPane.setLeftAnchor(itemTemplate, 0.0);
+
+      } catch (Exception e) {
+        System.out.println("ControllerDesktop: Error showing info.");
+        System.out.println(e);
+      }
+    }
+
 
     public void showLoading() {
 
