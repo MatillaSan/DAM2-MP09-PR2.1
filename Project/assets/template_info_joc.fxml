@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerInfoItem">
+   <children>
+      <VBox alignment="CENTER" layoutX="94.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Label">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="25.0" />
+               </VBox.margin>
+            </Label>
+            <ImageView fx:id="img" fitHeight="175.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="text1" alignment="TOP_CENTER" text="Label" wrapText="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" right="25.0" top="25.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="text2" alignment="CENTER" text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" textAlignment="CENTER" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

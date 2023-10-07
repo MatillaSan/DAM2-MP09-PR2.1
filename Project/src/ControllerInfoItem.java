@@ -2,6 +2,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class ControllerInfoItem {
 
@@ -12,7 +14,16 @@ public class ControllerInfoItem {
   private Label title = new Label();
 
   @FXML
-  private Label text = new Label();
+  private Label text1 = new Label();
+
+  @FXML
+  private Label text2 = new Label();
+
+  @FXML
+  private Label text3 = new Label();
+
+  @FXML
+  private Rectangle colorBox = new Rectangle();
 
   public void setImage(String resourceName) {
 
@@ -30,10 +41,28 @@ public class ControllerInfoItem {
     this.title.setText(text);
   }
 
-  public void setText(String text) {
+  public void setText1(String text) {
 
     // Estableix el contingut del Label
-    this.text.setText(text);
+    this.text1.setText(text);
+  }
+
+  public void setText2(String text) {
+
+    // Estableix el contingut del Label
+    this.text2.setText(text);
+  }
+
+  public void setText3(String text) {
+
+    // Estableix el contingut del Label
+    this.text3.setText(text);
+  }
+
+  public void setColorBox(String text) {
+
+    // Estableix el contingut del Label
+    this.colorBox.setFill(Color.valueOf(text));
   }
 
 }
