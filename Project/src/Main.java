@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static String mobileView = "Mobile0";
+
     public static AppData appData = AppData.getInstance();
 
     public static void main(String[] args) {
@@ -24,6 +26,8 @@ public class Main extends Application {
         UtilsViews.parentContainer.setStyle("-fx-font: 14 arial;");
         UtilsViews.addView(getClass(), "Desktop", "assets/layout_desktop.fxml");
         UtilsViews.addView(getClass(), "Mobile0", "assets/layout_mobile_0.fxml");
+        UtilsViews.addView(getClass(), "Mobile1", "assets/layout_mobile_1.fxml");
+        UtilsViews.addView(getClass(), "Mobile2", "assets/layout_mobile_2.fxml");
 
         Scene scene = new Scene(UtilsViews.parentContainer);
         
@@ -52,9 +56,13 @@ public class Main extends Application {
 
     private void _setLayout(int width) {
         if (width < 600) {
-            UtilsViews.setView("Mobile0");
+            UtilsViews.setView(mobileView);
         } else {
             UtilsViews.setView("Desktop");
         }
+    }
+
+    public static void setMobileView(String view) {
+        mobileView = view;
     }
 }

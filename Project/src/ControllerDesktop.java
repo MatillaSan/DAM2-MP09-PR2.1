@@ -28,14 +28,14 @@ public class ControllerDesktop implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Afegeix les opcions al ChoiceBox
-        choiceBox.getItems().addAll(opcions);
-        // Selecciona la primera opció
-        choiceBox.setValue(opcions[0]);
-        // Callback que s’executa quan l’usuari escull una opció
-        choiceBox.setOnAction((event) -> { loadList(); });
-        // Carregar automàticament les dades de ‘Personatges’
-        loadList();
+      // Afegeix les opcions al ChoiceBox
+      choiceBox.getItems().addAll(opcions);
+      // Selecciona la primera opció
+      choiceBox.setValue(opcions[0]);
+      // Callback que s’executa quan l’usuari escull una opció
+      choiceBox.setOnAction((event) -> { loadList(); });
+      // Carregar automàticament les dades de ‘Personatges’
+      loadList();
     }
     public void loadList() {
 

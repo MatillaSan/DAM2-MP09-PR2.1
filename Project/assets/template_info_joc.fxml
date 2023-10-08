@@ -11,6 +11,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="94.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <ImageView fx:id="img" fitHeight="175.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Label">
                <font>
                   <Font size="25.0" />
@@ -19,7 +20,6 @@
                   <Insets bottom="20.0" top="25.0" />
                </VBox.margin>
             </Label>
-            <ImageView fx:id="img" fitHeight="175.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="text1" alignment="TOP_CENTER" text="Label" wrapText="true">
                <font>
                   <Font size="16.0" />
@@ -31,7 +31,10 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="text2" alignment="CENTER" text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" textAlignment="CENTER" />
+            <Label fx:id="text2" alignment="CENTER" text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" textAlignment="CENTER" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
+               </VBox.margin></Label>
          </children>
       </VBox>
    </children>
